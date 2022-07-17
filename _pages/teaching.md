@@ -6,10 +6,10 @@ description: I have been as TA for courses in statistics, probability and risk m
 nav: true
 ---
 
-TA for courses:
+TA for courses: <br />
 
-STAT 285: Introductory Statistics for Business
-STAT 401: Basic for research
-STAT 596: Intermediate Statistics Methods
-STAT 534: Risk Practice
+STAT 285: Introductory Statistics for Business <br />
+STAT 401: Basic for research    <br />
+STAT 596: Intermediate Statistics Methods  <br />
+STAT 534: Risk Practice   <br />
 
