@@ -2,7 +2,7 @@
 layout: about
 title: about
 permalink: /
-subtitle: <a href='#'>Affiliations</a>. Address. Contacts. Moto. Etc.
+subtitle: <a href='[#](https://statistics.rutgers.edu/)'>Department of Statistics of Rutgers University</a>. 
 
 profile:
   align: right
