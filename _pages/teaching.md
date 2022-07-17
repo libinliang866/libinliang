@@ -2,10 +2,14 @@
 layout: page
 permalink: /teaching/
 title: teaching
-description: Materials for courses you taught. Replace this text with your description.
+description: I have been as TA for courses in statistics, probability and risk management.
 nav: true
 ---
 
-For now, this page is assumed to be a static description of your courses. You can convert it to a collection similar to `_projects/` so that you can have a dedicated page for each course.
+TA for courses:
 
-Organize your courses by years, topics, or universities, however you like!
+STAT 285: Introductory Statistics for Business
+STAT 401: Basic for research
+STAT 596: Intermediate Statistics Methods
+STAT 534: Risk Practice
+
