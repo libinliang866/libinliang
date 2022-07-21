@@ -14,7 +14,7 @@ profile:
 
 news: true  # includes a list of news items
 selected_papers: true # includes a list of papers marked as "selected={true}"
-social: true  # includes social icons at the bottom of the page
+social: false  # includes social icons at the bottom of the page
 ---
 
 I a PhD students in Statistics Department of Rutgers University. Before I joined Rutgers, I received my Bachelor degree from Zhejiang University,China and received my
