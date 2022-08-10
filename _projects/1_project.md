@@ -18,7 +18,47 @@ GP kernel based on neural structures such as recurent neural networks(RNN), tran
 Although it is widely utilized in application, the deep maxout network has never been derived as GP among previous works. The activation in maxout network  applied on multiple linear combinations of the input(or previous layers) so that the the implementation in Neal(1996) and Lee(2017) can not directly apply here.
 In this work, we formally derive deep, infinite width maxout network as GP and characterize its corresponding kernel as a compositional structure. Moreover, we give a efficient method based on numerical integration and interpolation to implement the kernel. We apply the deep maxtout network kernel in GP regression inference on CIFAR10 dataset and it can achieve encouraging results in numerical study.
 
-Reference:
+## Review of Maxout network
+
+{% include figure.html path="assets/img/mnngp_01.png" class="img-fluid rounded z-depth-1" %}
+
+{% include figure.html path="assets/img/mnngp_02.png" class="img-fluid rounded z-depth-1" %}
+
+## Infinite width deep maxout network as Gaussian Process
+
+### Single-layer Case
+
+{% include figure.html path="assets/img/mnngp_03.png" class="img-fluid rounded z-depth-1" %}
+
+{% include figure.html path="assets/img/mnngp_04.png" class="img-fluid rounded z-depth-1" %}
+
+### Multi-layer Case
+
+
+{% include figure.html path="assets/img/mnngp_05.png" class="img-fluid rounded z-depth-1" %}
+
+{% include figure.html path="assets/img/mnngp_06.png" class="img-fluid rounded z-depth-1" %}
+
+### Doing Bayesian Inference with MNNGP
+
+{% include figure.html path="assets/img/mnngp_07.png" class="img-fluid rounded z-depth-1" %}
+
+## Numerical Experiment
+
+### Compare with Finite width, deep maxout network
+
+Based on the experiment, no matter how large the maxout rank is, we can find that the Bayesian inference based on the MNNGP almost always outperforms their finite-width counterparts. Moreover, as the width of the maxout network gets larger, the performance of the finite-width, maxout network will be closer to that of the MNNGP.
+
+{% include figure.html path="assets/img/mnngp_08.png" class="img-fluid rounded z-depth-1" %}
+
+### Compare with Deep Neural Network Kernel
+
+We find that our MNNGP have competitive results compared with NNGPs with ReLU and Tanh kernels on MNIST and CIFAR10 datasets. Especially, our Deep Maxout Network Kernel always outperforms NNGPs in the more challenging dataset CIFAR10 with a significant improvement when the size of training set is large enough.
+
+{% include figure.html path="assets/img/mnngp_09.png" class="img-fluid rounded z-depth-1" %}
+
+
+## Reference:
 
 Jaehoon Lee, Yasaman Bahri, Roman Novak, Samuel S Schoenholz, Jeffrey Pennington, and Jascha Sohl-Dickstein.
 Deep neural networks as gaussian processes. arXiv preprint arXiv:1711.00165, 2017.
