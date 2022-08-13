@@ -2,16 +2,16 @@
 <html lang="en">
 
   <!-- Head -->
-  <head><meta http-equiv="refresh" content="3; url=https://libinliang866.github.io/" />    <!-- Metadata, OpenGraph and Schema.org -->
+  <head>    <!-- Metadata, OpenGraph and Schema.org -->
     
 
     <!-- Standard metadata -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Libin  Liang | Page not found</title>
+    <title>Libin  Liang | Tangent Kernel of Deep Neural Network</title>
     <meta name="author" content="Libin  Liang" />
-    <meta name="description" content="Looks like there has been a mistake. Nothing exists here." />
+    <meta name="description" content="Deep Neural Network Tangent Kernel" />
     <meta name="keywords" content="jekyll, jekyll-theme, academic-website, portfolio-website" />
 
 
@@ -32,7 +32,7 @@
     <link rel="shortcut icon" href="/assets/img/sigma.png"/>
     
     <link rel="stylesheet" href="/assets/css/main.css">
-    <link rel="canonical" href="https://libinliang866.github.io/404.html">
+    <link rel="canonical" href="https://libinliang866.github.io/blog/2022/NTK/">
     
     <!-- Dark Mode -->
     
@@ -71,7 +71,7 @@
               </li>
               
               <!-- Blog -->
-              <li class="nav-item ">
+              <li class="nav-item active">
                 <a class="nav-link" href="/blog/">blog</a>
               </li>
 
@@ -101,20 +101,123 @@
 
     <!-- Content -->
     <div class="container mt-5">
-      <!-- page.html -->
-        <div class="post">
+      <!-- _layouts/post.html -->
 
-          <header class="post-header">
-            <h1 class="post-title">Page not found</h1>
-            <p class="post-description">Looks like there has been a mistake. Nothing exists here.</p>
-          </header>
+<div class="post">
 
-          <article>
-            <p>You will be redirected to the main page within 3 seconds. If not redirected, please click <a href="https://libinliang866.github.io/">here</a>.</p>
+  <header class="post-header">
+    <h1 class="post-title">Tangent Kernel of Deep Neural Network</h1>
+    <p class="post-meta">February 26, 2022</p>
+    <p class="post-tags">
+      <a href="/blog/2022"> <i class="fas fa-calendar fa-sm"></i> 2022 </a>
+        ·  
+        <a href="/blog/tag/NTK">
+          <i class="fas fa-hashtag fa-sm"></i> NTK</a>  
+          
+        ·  
+        <a href="/blog/category/deep">
+          <i class="fas fa-tag fa-sm"></i> deep</a>  
+          <a href="/blog/category/learning">
+          <i class="fas fa-tag fa-sm"></i> learning</a>  
+          
 
-          </article>
+    </p>
+  </header>
 
-        </div>
+  <article class="post-content">
+    <p>Given the neural network with the struture as below:</p>
+
+<figure>
+
+  <picture>
+    <source media="(max-width: 480px)" srcset="/assets/img/ntk_1-480.webp"></source>
+    <source media="(max-width: 800px)" srcset="/assets/img/ntk_1-800.webp"></source>
+    <source media="(max-width: 1400px)" srcset="/assets/img/ntk_1-1400.webp"></source>
+    <!-- Fallback to the original file -->
+    <img class="img-fluid rounded z-depth-1" src="/assets/img/ntk_1.png">
+
+  </picture>
+
+</figure>
+
+<p>If we consider the inner product of the gradient for different input \(x\) and \(x^\prime\), given the width of the neural network is infiite, the inner product will be deterministic kernel dependending on the depth \(L\) and the non-linearity activation.</p>
+
+<figure>
+
+  <picture>
+    <source media="(max-width: 480px)" srcset="/assets/img/ntk_2-480.webp"></source>
+    <source media="(max-width: 800px)" srcset="/assets/img/ntk_2-800.webp"></source>
+    <source media="(max-width: 1400px)" srcset="/assets/img/ntk_2-1400.webp"></source>
+    <!-- Fallback to the original file -->
+    <img class="img-fluid rounded z-depth-1" src="/assets/img/ntk_2.png">
+
+  </picture>
+
+</figure>
+
+<figure>
+
+  <picture>
+    <source media="(max-width: 480px)" srcset="/assets/img/ntk_3-480.webp"></source>
+    <source media="(max-width: 800px)" srcset="/assets/img/ntk_3-800.webp"></source>
+    <source media="(max-width: 1400px)" srcset="/assets/img/ntk_3-1400.webp"></source>
+    <!-- Fallback to the original file -->
+    <img class="img-fluid rounded z-depth-1" src="/assets/img/ntk_3.png">
+
+  </picture>
+
+</figure>
+
+<p>With the gradient, we can write down the linearization of the neural network.</p>
+
+<figure>
+
+  <picture>
+    <source media="(max-width: 480px)" srcset="/assets/img/ntk_4-480.webp"></source>
+    <source media="(max-width: 800px)" srcset="/assets/img/ntk_4-800.webp"></source>
+    <source media="(max-width: 1400px)" srcset="/assets/img/ntk_4-1400.webp"></source>
+    <!-- Fallback to the original file -->
+    <img class="img-fluid rounded z-depth-1" src="/assets/img/ntk_4.png">
+
+  </picture>
+
+</figure>
+
+<p>And then we can derive the expression of the linearization of the neural network during training.</p>
+
+<figure>
+
+  <picture>
+    <source media="(max-width: 480px)" srcset="/assets/img/ntk_5-480.webp"></source>
+    <source media="(max-width: 800px)" srcset="/assets/img/ntk_5-800.webp"></source>
+    <source media="(max-width: 1400px)" srcset="/assets/img/ntk_5-1400.webp"></source>
+    <!-- Fallback to the original file -->
+    <img class="img-fluid rounded z-depth-1" src="/assets/img/ntk_5.png">
+
+  </picture>
+
+</figure>
+
+<p>Given new testing point \(x\in X_T\), we can derive the distribution of the output of the trained linearization neural network as below</p>
+
+<figure>
+
+  <picture>
+    <source media="(max-width: 480px)" srcset="/assets/img/ntk_6-480.webp"></source>
+    <source media="(max-width: 800px)" srcset="/assets/img/ntk_6-800.webp"></source>
+    <source media="(max-width: 1400px)" srcset="/assets/img/ntk_6-1400.webp"></source>
+    <!-- Fallback to the original file -->
+    <img class="img-fluid rounded z-depth-1" src="/assets/img/ntk_6.png">
+
+  </picture>
+
+</figure>
+
+<p>Results from paper Wide Neural Networks of Any Depth Evolve asLinear Models Under Gradient Descent claim that with the width of the neural network large enough, the neural network will be close to the linearization counterparts.</p>
+
+  </article>
+
+</div>
 
     </div>
 

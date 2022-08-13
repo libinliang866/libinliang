@@ -2,16 +2,16 @@
 <html lang="en">
 
   <!-- Head -->
-  <head><meta http-equiv="refresh" content="3; url=https://libinliang866.github.io/" />    <!-- Metadata, OpenGraph and Schema.org -->
+  <head>    <!-- Metadata, OpenGraph and Schema.org -->
     
 
     <!-- Standard metadata -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Libin  Liang | Page not found</title>
+    <title>Libin  Liang | Deep neural network with infinite width</title>
     <meta name="author" content="Libin  Liang" />
-    <meta name="description" content="Looks like there has been a mistake. Nothing exists here." />
+    <meta name="description" content="Deep neural network with infinite width" />
     <meta name="keywords" content="jekyll, jekyll-theme, academic-website, portfolio-website" />
 
 
@@ -32,7 +32,7 @@
     <link rel="shortcut icon" href="/assets/img/sigma.png"/>
     
     <link rel="stylesheet" href="/assets/css/main.css">
-    <link rel="canonical" href="https://libinliang866.github.io/404.html">
+    <link rel="canonical" href="https://libinliang866.github.io/blog/2021/dnngp/">
     
     <!-- Dark Mode -->
     
@@ -71,7 +71,7 @@
               </li>
               
               <!-- Blog -->
-              <li class="nav-item ">
+              <li class="nav-item active">
                 <a class="nav-link" href="/blog/">blog</a>
               </li>
 
@@ -101,20 +101,118 @@
 
     <!-- Content -->
     <div class="container mt-5">
-      <!-- page.html -->
-        <div class="post">
+      <!-- _layouts/post.html -->
 
-          <header class="post-header">
-            <h1 class="post-title">Page not found</h1>
-            <p class="post-description">Looks like there has been a mistake. Nothing exists here.</p>
-          </header>
+<div class="post">
 
-          <article>
-            <p>You will be redirected to the main page within 3 seconds. If not redirected, please click <a href="https://libinliang866.github.io/">here</a>.</p>
+  <header class="post-header">
+    <h1 class="post-title">Deep neural network with infinite width</h1>
+    <p class="post-meta">December 3, 2021</p>
+    <p class="post-tags">
+      <a href="/blog/2021"> <i class="fas fa-calendar fa-sm"></i> 2021 </a>
+        ·  
+        <a href="/blog/tag/DNNGP">
+          <i class="fas fa-hashtag fa-sm"></i> DNNGP</a>  
+          
+        ·  
+        <a href="/blog/category/Deep">
+          <i class="fas fa-tag fa-sm"></i> Deep</a>  
+          <a href="/blog/category/learning">
+          <i class="fas fa-tag fa-sm"></i> learning</a>  
+          
 
-          </article>
+    </p>
+  </header>
 
-        </div>
+  <article class="post-content">
+    <p>To study the infinite width of neural network is of interest because of two main reasons. The first one is that the neural networks applied in the real application usually have a large width so they may share similar properties as neural networks with inifinite width. The other reason is that the neural networks with inifinite width usually have explicit properties that is easy to study. Here we try to introduce the result about the initial distribution of deep neural network with inifinite width from Jaehoon Lee etc. In this result, the initial output of the deep neural network with inifinite width will become a Gaussian Process with a kernel having a compositional structure.</p>
+
+<h2 id="structure-of-deep-neural-network">Structure of Deep Neural Network</h2>
+
+<p>Given input \(x\in \mathbb{R}^d\), the deep neural network with \(L\) hidden layers can be expressed as the following.</p>
+
+\[z_i^l(x)=b_i^l+\sum_{j=1}^{N_l}W_{ij}^lx_{j}^l(x),~~~~~ x_j^l(x)=\phi(z_j^{l-1}(x))~~~~~~~ l=1,...,L\]
+
+<p>where \(\phi(\cdot)\) is the non-linear activation such as \(tanh\) or $ReLU$.</p>
+
+<h2 id="deep-neural-network-with-infinite-width">Deep Neural Network with Infinite width</h2>
+
+<p>We can first derive the distribution of the output for one layer and then extend to multiple layers.</p>
+
+\[\newline\newline\]
+
+<h3 id="single-layer-case">Single Layer Case</h3>
+
+<p>Now we consider the deep neural network with only 1-layer. Given the bias \(b_i^0\sim_{i.i.d}N(0,\sigma_b^2)\) and weight \(W_{ij}^0 \sim_{i.i.d} N(0,\frac{\sigma_w^2}{d})\), then we could have</p>
+
+\[z_i^0(x)\sim_{i.i.d} N(0, \sigma_b^2+\sigma_w^2 \frac{||x||^2}{d})~~~~ i=1,...,N_1\]
+
+<p>And we have \(x_i^1 = \phi(z_i^0(x))\) are i.i.d.(Independent and identical distributed). Given \(b^1 \sim N(0,\sigma_b^2)\) and \(W_{i}^1\sim N(0,\frac{\sigma_w^2}{N_1})\)</p>
+
+<p>Then with central limit theorem, we have</p>
+
+\[lim_{N_1\rightarrow \infty}  z^1(x) = b^1 + W_{i}^1 x_i^1(x) \sim N(0, \sigma_b^2 + \sigma_w^2 K^0(x,x))\]
+
+<p>Where \(K^0(x,x^\prime)=E_{z_1^0(x)}[\phi(z_1^0(x))\phi(z_1^0(x^\prime))]\).</p>
+
+<p>For the covariance between \(z^1(x)\) and \(z^1(x^\prime)\). we have</p>
+
+\[lim_{N_1\rightarrow \infty} cov(z^1(x), z^1(x^\prime)) = \sigma_b^2 + \sigma_w^2 K^1(x,x) = K^1(x,x^\prime)\]
+
+<p>That is, with single layer case, the initial output \(\{z^1(x)\}\) will have be a Gaussian process with kernel \(K^1(\cdot,\cdot)\).</p>
+
+\[\newline\newline\]
+
+<h3 id="multiple-layers-case">Multiple Layers Case</h3>
+
+<p>For \(L&gt;1\), given the initialization of bias \(b_i^l\sim N(0,\sigma_b^2) ~~ i=0,...,L\) and weights \(W_{ij}^l\sim N(0,\frac{\sigma_w^2}{N^{l}}) ~~ i=0,...,L\),we can define the compositional kernel. That is,</p>
+
+\[K^0(x,x^\prime)=\frac{&lt;x,x^\prime&gt;}{d} 
+\newline
+K^l(x,x^\prime)=\sigma_b^2 + \sigma_w^2 K^{l-1}(x,x^\prime)  ~~~~ l=1,...,L\]
+
+<p>It can be proved that the for the deep neural network with \(L\) hidden layer and with the initialization illustrated as above, we could have the initial output \(\{z^L(x)\}\) will be a Gaussian process with kernel \(K^L(\cdot, \cdot)\).</p>
+
+\[\newline\newline\]
+
+<h3 id="bayesian-inference-with-deep-neural-network-kernel">Bayesian Inference with Deep Neural Network Kernel</h3>
+
+<p>Let the dataset be \(D=\lbrace x^i,t^i\rbrace_{i=1,...,n}\). Further assume that \(t^i \vert z^L(x^i)\sim N(0,\sigma_\epsilon^2)\). Then given a new data point \(x^*\), we have</p>
+
+\[z^* \vert D, x \sim N(\bar{\mu}, \bar{\sigma}^2)\]
+
+\[\bar{\mu} = K_{x^\*, D}(K_{D,D}+\sigma_\epsilon^2 I_n)^{-1}t\]
+
+\[\bar{\sigma}^2 = K_{x^\*,x^\*} - K_{x^\*, D}(K_{D,D}+\sigma_\epsilon^2 I_n)^{-1}K_{x^\*, D}^T\]
+
+<p>So that we can make a prediction with Bayesian Inference.</p>
+
+<h2 id="numerical-study">Numerical Study</h2>
+
+<p>The numerical study will based on doing the bayesian inference with deep neural network kernel on the data set MNIST and CIFAR10.</p>
+
+<h3 id="compare-with-the-neural-network-with-finite-width">Compare with the Neural Network with finite width</h3>
+
+<p>Then we have the results as below:</p>
+
+<figure>
+
+  <picture>
+    <source media="(max-width: 480px)" srcset="/assets/img/dnngp_numerical_experiment-480.webp"></source>
+    <source media="(max-width: 800px)" srcset="/assets/img/dnngp_numerical_experiment-800.webp"></source>
+    <source media="(max-width: 1400px)" srcset="/assets/img/dnngp_numerical_experiment-1400.webp"></source>
+    <!-- Fallback to the original file -->
+    <img class="img-fluid rounded z-depth-1" src="/assets/img/dnngp_numerical_experiment.png">
+
+  </picture>
+
+</figure>
+
+<p>We can observe that the results of bayesian inference with deep neural network kernel often outperforms the neural network with finite width. Moreover, the wider the neural network, the results will be closer to the bayesian inference with deep neural network kernel.</p>
+
+  </article>
+
+</div>
 
     </div>
 

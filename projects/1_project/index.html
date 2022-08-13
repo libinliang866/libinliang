@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <!-- Head -->
+  <head>    <!-- Metadata, OpenGraph and Schema.org -->
+    
+
+    <!-- Standard metadata -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Libin  Liang | Deep Maxout Network GP</title>
+    <meta name="author" content="Libin  Liang" />
+    <meta name="description" content="Initial distribution of Deep Maxout Network with inifinite width" />
+    <meta name="keywords" content="jekyll, jekyll-theme, academic-website, portfolio-website" />
+
+
+    <!-- Bootstrap & MDB -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha256-DF7Zhf293AJxJNTmh5zhoYYIMs2oXitRfBjY+9L//AY=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mdbootstrap@4.20.0/css/mdb.min.css" integrity="sha256-jpjYvU3G3N6nrrBwXJoVEYI/0zw8htfFnhT9ljN3JJw=" crossorigin="anonymous" />
+
+    <!-- Fonts & Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/academicons@1.9.1/css/academicons.min.css" integrity="sha256-i1+4qU2G2860dGGIOJscdC30s9beBXjFfzjWLjBRsBg=" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:100,300,400,500,700|Material+Icons">
+
+    <!-- Code Syntax Highlighting -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jwarby/jekyll-pygments-themes@master/github.css" media="none" id="highlight_theme_light" />
+
+    <!-- Styles -->
+    
+    <link rel="shortcut icon" href="/assets/img/sigma.png"/>
+    
+    <link rel="stylesheet" href="/assets/css/main.css">
+    <link rel="canonical" href="https://libinliang866.github.io/projects/1_project/">
+    
+    <!-- Dark Mode -->
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jwarby/jekyll-pygments-themes@master/native.css" media="none" id="highlight_theme_dark" />
+
+    <script src="/assets/js/theme.js"></script>
+    <script src="/assets/js/dark_mode.js"></script>
+    
+
+  </head>
+
+  <!-- Body -->
+  <body class="fixed-top-nav ">
+
+    <!-- Header -->
+    <header>
+
+      <!-- Nav Bar -->
+      <nav id="navbar" class="navbar navbar-light navbar-expand-sm fixed-top">
+        <div class="container">
+          <a class="navbar-brand title font-weight-lighter" href="https://libinliang866.github.io/"><span class="font-weight-bold">Libin</span>   Liang</a>
+          <!-- Navbar Toggle -->
+          <button class="navbar-toggler collapsed ml-auto" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar top-bar"></span>
+            <span class="icon-bar middle-bar"></span>
+            <span class="icon-bar bottom-bar"></span>
+          </button>
+
+          <div class="collapse navbar-collapse text-right" id="navbarNav">
+            <ul class="navbar-nav ml-auto flex-nowrap">
+
+              <!-- About -->
+              <li class="nav-item ">
+                <a class="nav-link" href="/">about</a>
+              </li>
+              
+              <!-- Blog -->
+              <li class="nav-item ">
+                <a class="nav-link" href="/blog/">blog</a>
+              </li>
+
+              <!-- Other pages -->
+              <li class="nav-item ">
+                <a class="nav-link" href="/projects/">projects</a>
+              </li>
+              <li class="nav-item ">
+                <a class="nav-link" href="/publications/">publications</a>
+              </li>
+              <li class="nav-item ">
+                <a class="nav-link" href="/teaching/">teaching</a>
+              </li>
+
+              <!-- Toogle theme mode -->
+              <div class="toggle-container">
+                <a id="light-toggle">
+                  <i class="fas fa-moon"></i>
+                  <i class="fas fa-sun"></i>
+                </a>
+              </div>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Content -->
+    <div class="container mt-5">
+      <!-- page.html -->
+        <div class="post">
+
+          <header class="post-header">
+            <h1 class="post-title">Deep Maxout Network GP</h1>
+            <p class="post-description">Initial distribution of Deep Maxout Network with inifinite width</p>
+          </header>
+
+          <article>
+            <p>Investigating Neural Network with infinite width becomes a popular topic for two main reasons. First,  neural networks in real application typically have a super large width structure which may share similar properties with infinite width neural network. Second, infinite width neural networks typically have analytical properties which are easier to study.</p>
+
+<p>Infinite width neural network as Gaussain process(GP) was first derived in Neal(1996). Given a proper initialization, the output of one layer neural network becomes a GP with kernel depending on the nonlinearity activation. In Lee(2019),Matthews(2018), the infinite width deep neural network(DNN) as GP  was derived and the kernel has a compositional structure depending on the number of depth and the nonlinearity activation in the network. Moreover, they found GP inference with DNN kernel often outperforms their finite width counterparts. Both Neal(1996).
+and Lee(2019)studied neural networks with activation applied on single linear combination of the input. Following the infinite width scheme,  Novak(2018) and Garriga(2018) developed the
+GP kernel based on the 
+deep convolutional neural networks(CNN) structure and Yang(2019) developed the
+GP kernel based on neural structures such as recurent neural networks(RNN), transformer etc.</p>
+
+<p>Although it is widely utilized in application, the deep maxout network has never been derived as GP among previous works. The activation in maxout network  applied on multiple linear combinations of the input(or previous layers) so that the the implementation in Neal(1996) and Lee(2017) can not directly apply here.
+In this work, we formally derive deep, infinite width maxout network as GP and characterize its corresponding kernel as a compositional structure. Moreover, we give a efficient method based on numerical integration and interpolation to implement the kernel. We apply the deep maxtout network kernel in GP regression inference on CIFAR10 dataset and it can achieve encouraging results in numerical study.</p>
+
+<h2 id="review-of-maxout-network">Review of Maxout network</h2>
+
+<figure>
+
+  <picture>
+    <source media="(max-width: 480px)" srcset="/assets/img/mnngp_01-480.webp"></source>
+    <source media="(max-width: 800px)" srcset="/assets/img/mnngp_01-800.webp"></source>
+    <source media="(max-width: 1400px)" srcset="/assets/img/mnngp_01-1400.webp"></source>
+    <!-- Fallback to the original file -->
+    <img class="img-fluid rounded z-depth-1" src="/assets/img/mnngp_01.png">
+
+  </picture>
+
+</figure>
+
+<figure>
+
+  <picture>
+    <source media="(max-width: 480px)" srcset="/assets/img/mnngp_02-480.webp"></source>
+    <source media="(max-width: 800px)" srcset="/assets/img/mnngp_02-800.webp"></source>
+    <source media="(max-width: 1400px)" srcset="/assets/img/mnngp_02-1400.webp"></source>
+    <!-- Fallback to the original file -->
+    <img class="img-fluid rounded z-depth-1" src="/assets/img/mnngp_02.png">
+
+  </picture>
+
+</figure>
+
+<h2 id="infinite-width-deep-maxout-network-as-gaussian-process">Infinite width deep maxout network as Gaussian Process</h2>
+
+<h3 id="single-layer-case">Single-layer Case</h3>
+
+<figure>
+
+  <picture>
+    <source media="(max-width: 480px)" srcset="/assets/img/mnngp_03-480.webp"></source>
+    <source media="(max-width: 800px)" srcset="/assets/img/mnngp_03-800.webp"></source>
+    <source media="(max-width: 1400px)" srcset="/assets/img/mnngp_03-1400.webp"></source>
+    <!-- Fallback to the original file -->
+    <img class="img-fluid rounded z-depth-1" src="/assets/img/mnngp_03.png">
+
+  </picture>
+
+</figure>
+
+<figure>
+
+  <picture>
+    <source media="(max-width: 480px)" srcset="/assets/img/mnngp_04-480.webp"></source>
+    <source media="(max-width: 800px)" srcset="/assets/img/mnngp_04-800.webp"></source>
+    <source media="(max-width: 1400px)" srcset="/assets/img/mnngp_04-1400.webp"></source>
+    <!-- Fallback to the original file -->
+    <img class="img-fluid rounded z-depth-1" src="/assets/img/mnngp_04.png">
+
+  </picture>
+
+</figure>
+
+<h3 id="multi-layer-case">Multi-layer Case</h3>
+
+<figure>
+
+  <picture>
+    <source media="(max-width: 480px)" srcset="/assets/img/mnngp_05-480.webp"></source>
+    <source media="(max-width: 800px)" srcset="/assets/img/mnngp_05-800.webp"></source>
+    <source media="(max-width: 1400px)" srcset="/assets/img/mnngp_05-1400.webp"></source>
+    <!-- Fallback to the original file -->
+    <img class="img-fluid rounded z-depth-1" src="/assets/img/mnngp_05.png">
+
+  </picture>
+
+</figure>
+
+<figure>
+
+  <picture>
+    <source media="(max-width: 480px)" srcset="/assets/img/mnngp_06-480.webp"></source>
+    <source media="(max-width: 800px)" srcset="/assets/img/mnngp_06-800.webp"></source>
+    <source media="(max-width: 1400px)" srcset="/assets/img/mnngp_06-1400.webp"></source>
+    <!-- Fallback to the original file -->
+    <img class="img-fluid rounded z-depth-1" src="/assets/img/mnngp_06.png">
+
+  </picture>
+
+</figure>
+
+<h3 id="doing-bayesian-inference-with-mnngp">Doing Bayesian Inference with MNNGP</h3>
+
+<figure>
+
+  <picture>
+    <source media="(max-width: 480px)" srcset="/assets/img/mnngp_07-480.webp"></source>
+    <source media="(max-width: 800px)" srcset="/assets/img/mnngp_07-800.webp"></source>
+    <source media="(max-width: 1400px)" srcset="/assets/img/mnngp_07-1400.webp"></source>
+    <!-- Fallback to the original file -->
+    <img class="img-fluid rounded z-depth-1" src="/assets/img/mnngp_07.png">
+
+  </picture>
+
+</figure>
+
+<h2 id="numerical-experiment">Numerical Experiment</h2>
+
+<h3 id="compare-with-finite-width-deep-maxout-network">Compare with Finite width, deep maxout network</h3>
+
+<p>Based on the experiment, no matter how large the maxout rank is, we can find that the Bayesian inference based on the MNNGP almost always outperforms their finite-width counterparts. Moreover, as the width of the maxout network gets larger, the performance of the finite-width, maxout network will be closer to that of the MNNGP.</p>
+
+<figure>
+
+  <picture>
+    <source media="(max-width: 480px)" srcset="/assets/img/mnngp_08-480.webp"></source>
+    <source media="(max-width: 800px)" srcset="/assets/img/mnngp_08-800.webp"></source>
+    <source media="(max-width: 1400px)" srcset="/assets/img/mnngp_08-1400.webp"></source>
+    <!-- Fallback to the original file -->
+    <img class="img-fluid rounded z-depth-1" src="/assets/img/mnngp_08.png">
+
+  </picture>
+
+</figure>
+
+<h3 id="compare-with-deep-neural-network-kernel">Compare with Deep Neural Network Kernel</h3>
+
+<p>We find that our MNNGP have competitive results compared with NNGPs with ReLU and Tanh kernels on MNIST and CIFAR10 datasets. Especially, our Deep Maxout Network Kernel always outperforms NNGPs in the more challenging dataset CIFAR10 with a significant improvement when the size of training set is large enough.</p>
+
+<figure>
+
+  <picture>
+    <source media="(max-width: 480px)" srcset="/assets/img/mnngp_09-480.webp"></source>
+    <source media="(max-width: 800px)" srcset="/assets/img/mnngp_09-800.webp"></source>
+    <source media="(max-width: 1400px)" srcset="/assets/img/mnngp_09-1400.webp"></source>
+    <!-- Fallback to the original file -->
+    <img class="img-fluid rounded z-depth-1" src="/assets/img/mnngp_09.png">
+
+  </picture>
+
+</figure>
+
+<h2 id="reference">Reference:</h2>
+
+<p>Jaehoon Lee, Yasaman Bahri, Roman Novak, Samuel S Schoenholz, Jeffrey Pennington, and Jascha Sohl-Dickstein.
+Deep neural networks as gaussian processes. arXiv preprint arXiv:1711.00165, 2017.</p>
+
+<p>Jaehoon Lee, Lechao Xiao, Samuel Schoenholz, Yasaman Bahri, Roman Novak, Jascha Sohl-Dickstein, and Jeffrey
+Pennington. Wide neural networks of any depth evolve as linear models under gradient descent. In H. Wallach,</p>
+
+<p>H. Larochelle, A. Beygelzimer, F. d’Alché-Buc, E. Fox, and R. Garnett, editors, Advances in Neural Information
+Processing Systems, volume 32. Curran Associates, Inc., 2019. URL https://proceedings.neurips.cc/paper/
+2019/file/0d1a9651497a38d8b1c3871c84528bd4-Paper.pdf.</p>
+
+<p>Yuan Cao and Quanquan Gu. Generalization bounds of stochastic gradient descent for wide and deep neural networks.
+In H. Wallach, H. Larochelle, A. Beygelzimer, F. d’Alché-Buc, E. Fox, and R. Garnett, editors, Advances in Neural
+Information Processing Systems, volume 32. Curran Associates, Inc., 2019. URL https://proceedings.neurips.
+cc/paper/2019/file/cf9dc5e4e194fc21f397b4cac9cc3ae9-Paper.pdf.</p>
+
+<p>Greg Yang, Jeffrey Pennington, Vinay Rao, Jascha Sohl-Dickstein, and Samuel S. Schoenholz. A mean field theory of
+batch normalization. CoRR, abs/1902.08129, 2019. URL http://arxiv.org/abs/1902.08129.</p>
+
+<p>Radford M Neal. Priors for infinite networks. In Bayesian Learning for Neural Networks, pages 29–53. Springer, 1996.
+Alexander G de G Matthews, Mark Rowland, Jiri Hron, Richard E Turner, and Zoubin Ghahramani. Gaussian process
+behaviour in wide deep neural networks. arXiv preprint arXiv:1804.11271, 2018.</p>
+
+<p>Roman Novak, Lechao Xiao, Jaehoon Lee, Yasaman Bahri, Greg Yang, Jiri Hron, Daniel A Abolafia, Jeffrey Pennington,
+and Jascha Sohl-Dickstein. Bayesian deep convolutional networks with many channels are gaussian processes. arXiv
+preprint arXiv:1810.05148, 2018.</p>
+
+<p>Adrià Garriga-Alonso, Carl Edward Rasmussen, and Laurence Aitchison. Deep convolutional networks as shallow
+gaussian processes. arXiv preprint arXiv:1808.05587, 2018.</p>
+
+<p>Greg Yang. Tensor programs I: wide feedforward or recurrent neural networks of any architecture are gaussian processes.
+CoRR, abs/1910.12478, 2019. URL http://arxiv.org/abs/1910.12478.</p>
+
+<p>Ian Goodfellow, David Warde-Farley, Mehdi Mirza, Aaron Courville, and Yoshua Bengio. Maxout networks. In
+Proceedings of the 30th International Conference on Machine Learning, volume 28 of Proceedings of Machine
+Learning Research, pages 1319–1327, Atlanta, Georgia, USA, 17–19 Jun 2013. PMLR.</p>
+
+<p>Youngmin Cho and Lawrence Saul. Kernel methods for deep learning. In Y. Bengio, D. Schuurmans,
+J. Lafferty, C. Williams, and A. Culotta, editors, Advances in Neural Information Processing Systems, vol-
+ume 22. Curran Associates, Inc., 2009. URL https://proceedings.neurips.cc/paper/2009/file/
+5751ec3e9a4feab575962e78e006250d-Paper.pdf.</p>
+
+<p>Ryan Rifkin and Aldebaro Klautau. In defense of one-vs-all classification. The Journal of Machine Learning Research,
+5:101–141, 2004.</p>
+
+
+          </article>
+
+        </div>
+
+    </div>
+
+    <!-- Footer -->    
+    <footer class="fixed-bottom">
+      <div class="container mt-0">
+        © Copyright 2022 Libin  Liang. Powered by <a href="https://jekyllrb.com/" target="_blank" rel="noopener noreferrer">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio" target="_blank" rel="noopener noreferrer">al-folio</a> theme. Hosted by <a href="https://pages.github.com/" target="_blank" rel="noopener noreferrer">GitHub Pages</a>. Photos from <a href="https://unsplash.com" target="_blank" rel="noopener noreferrer">Unsplash</a>.
+
+      </div>
+    </footer>
+
+    <!-- JavaScripts -->
+    <!-- jQuery -->
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+    <!-- Bootsrap & MDB scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.2/dist/umd/popper.min.js" integrity="sha256-l/1pMF/+J4TThfgARS6KwWrk/egwuVvhRzfLAMQ6Ds4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js" integrity="sha256-SyTu6CwrfOhaznYZPoolVw2rxoY7lKYKQvqbtqN93HI=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mdbootstrap@4.20.0/js/mdb.min.js" integrity="sha256-NdbiivsvWt7VYCt6hYNT3h/th9vSTL4EDWeGs5SN3DA=" crossorigin="anonymous"></script>
+
+    <!-- Masonry & imagesLoaded -->
+  <script defer src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha256-Nn1q/fx0H7SNLZMQ5Hw5JLaTRZp0yILA/FRexe19VdI=" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/imagesloaded@4/imagesloaded.pkgd.min.js"></script>
+  <script defer src="/assets/js/masonry.js" type="text/javascript"></script>
+    
+  <!-- Medium Zoom JS -->
+  <script src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.6/dist/medium-zoom.min.js" integrity="sha256-EdPgYcPk/IIrw7FYeuJQexva49pVRZNmt3LculEr7zM=" crossorigin="anonymous"></script>
+  <script src="/assets/js/zoom.js"></script><!-- Load Common JS -->
+  <script src="/assets/js/common.js"></script>
+
+    <!-- MathJax -->
+  <script type="text/javascript">
+    window.MathJax = {
+      tex: {
+        tags: 'ams'
+      }
+    };
+  </script>
+  <script defer type="text/javascript" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-mml-chtml.js"></script>
+  <script defer src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+
+    
+  </body>
+</html>
+
